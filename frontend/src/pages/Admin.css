@@ -1,0 +1,136 @@
+.admin-login {
+  min-height: 100vh;
+  background: #fdf6f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-box {
+  background: white;
+  padding: 48px 40px;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+  text-align: center;
+  width: 360px;
+}
+
+.login-box h2 { color: #2c1a0e; font-size: 1.8rem; margin-bottom: 8px; }
+.login-box p { color: #8c6a55; margin-bottom: 28px; }
+
+.login-box input {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #e0d0c4;
+  border-radius: 10px;
+  font-size: 1rem;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  background: #fdf6f0;
+}
+
+.login-box button {
+  width: 100%;
+  background: #2c1a0e;
+  color: #f5e6d3;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-page { min-height: 100vh; background: #fdf6f0; padding-bottom: 60px; }
+
+.admin-header {
+  background: #2c1a0e;
+  color: #f5e6d3;
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-header h1 { font-size: 1.5rem; }
+
+.logout-btn {
+  background: #e8b4a0;
+  color: #2c1a0e;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.admin-stats {
+  display: flex;
+  gap: 20px;
+  padding: 32px;
+  flex-wrap: wrap;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px 32px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  text-align: center;
+  flex: 1;
+  min-width: 150px;
+}
+
+.stat-card h3 { font-size: 2rem; color: #2c1a0e; margin-bottom: 4px; }
+.stat-card p { color: #8c6a55; font-size: 0.9rem; }
+
+.admin-tabs {
+  display: flex;
+  gap: 12px;
+  padding: 0 32px 24px;
+}
+
+.admin-tabs button {
+  padding: 10px 24px;
+  border-radius: 20px;
+  border: 2px solid #2c1a0e;
+  background: white;
+  color: #2c1a0e;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.admin-tabs button.active {
+  background: #2c1a0e;
+  color: #f5e6d3;
+}
+
+.admin-table-container { padding: 0 32px; overflow-x: auto; }
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+}
+
+.admin-table th {
+  background: #2c1a0e;
+  color: #f5e6d3;
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.admin-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #f0e6dc;
+  color: #2c1a0e;
+  font-size: 0.9rem;
+}
+
+.admin-table tr:hover { background: #fdf6f0; }
+.empty { color: #8c6a55; padding: 32px; text-align: center; }
