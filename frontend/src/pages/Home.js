@@ -39,7 +39,7 @@ function Home() {
         <div className="about-content">
           <h2>Made with Love in Lahore 🩷</h2>
           <p>Bakerashque is a home bakery crafting fresh brownies, brookies, cookies, cinnamon rolls, bento cakes and custom cakes. Every order is made fresh with quality ingredients and a whole lot of love. DM us on Instagram or WhatsApp to place your order!</p>
-          <a href="https://www.instagram.com/bakerashque" target="_blank" className="btn-instagram">Follow on Instagram</a>
+          <a href="https://www.instagram.com/bakerashque" target="_blank" rel="noopener noreferrer" className="btn-instagram">Follow on Instagram</a>
         </div>
       </section>
 
