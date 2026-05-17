@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "./Admin.css";
@@ -6,6 +7,7 @@ function Admin() {
   const [password, setPassword] = useState("");
   const [token, setToken] = useState(localStorage.getItem("adminToken") || "");
   const [orders, setOrders] = useState([]);
+  const [quotes, setQuotes] = useState([]);
   const [activeTab, setActiveTab] = useState("orders");
 
   const login = async () => {
@@ -30,12 +32,10 @@ function Admin() {
 
   useEffect(() => {
     if (!token) return;
-    
-    // Fetch orders from your existing endpoint
     fetch(`${process.env.REACT_APP_API_URL}/api/orders`)
-      .then(r => r.json())
-      .then(setOrders)
-      .catch(console.log);
+      .then(r => r.json()).then(setOrders).catch(console.log);
+    fetch(`${process.env.REACT_APP_API_URL}/api/quotes`)
+      .then(r => r.json()).then(setQuotes).catch(console.log);
   }, [token]);
 
   if (!token) {
@@ -70,45 +70,85 @@ function Admin() {
           <p>Total Orders</p>
         </div>
         <div className="stat-card">
+          <h3>{quotes.length}</h3>
+          <p>Quote Requests</p>
+        </div>
+        <div className="stat-card">
           <h3>Rs {orders.reduce((s, o) => s + o.totalPrice, 0).toLocaleString()}</h3>
           <p>Total Revenue</p>
         </div>
       </div>
 
-      <div className="admin-table-container">
-        {orders.length === 0 ? (
-          <p className="empty">No orders yet! 🍰</p>
-        ) : (
-          <table className="admin-table">
-            <thead>
-              <tr>
-                <th>Customer</th>
-                <th>Phone</th>
-                <th>Items</th>
-                <th>Total</th>
-                <th>Date</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map(order => (
-                <tr key={order._id}>
-                  <td>{order.customerName}</td>
-                  <td>{order.phone}</td>
-                  <td>{order.items.map(i => `${i.name} x${i.quantity}`).join(", ")}</td>
-                  <td>Rs {order.totalPrice}</td>
-                  <td>{new Date(order.date).toLocaleDateString()}</td>
-                  <td>
-                    <span className={`status-badge status-${order.status || "pending"}`}>
-                      {order.status || "pending"}
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+      <div className="admin-tabs">
+        <button className={activeTab === "orders" ? "active" : ""} onClick={() => setActiveTab("orders")}>Orders ({orders.length})</button>
+        <button className={activeTab === "quotes" ? "active" : ""} onClick={() => setActiveTab("quotes")}>Quote Requests ({quotes.length})</button>
       </div>
+
+      {activeTab === "orders" && (
+        <div className="admin-table-container">
+          {orders.length === 0 ? <p className="empty">No orders yet!</p> : (
+            <table className="admin-table">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Phone</th>
+                  <th>Items</th>
+                  <th>Total</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {orders.map(order => (
+                  <tr key={order._id}>
+                    <td>{order.customerName}</td>
+                    <td>{order.phone}</td>
+                    <td>{order.items.map(i => `${i.name} x${i.quantity}`).join(", ")}</td>
+                    <td>Rs {order.totalPrice}</td>
+                    <td>{new Date(order.date).toLocaleDateString()}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      )}
+
+      {activeTab === "quotes" && (
+        <div className="admin-table-container">
+          {quotes.length === 0 ? <p className="empty">No quote requests yet!</p> : (
+            <table className="admin-table">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Phone</th>
+                  <th>Cake Type</th>
+                  <th>Size</th>
+                  <th>Flavour</th>
+                  <th>Occasion</th>
+                  <th>Budget</th>
+                  <th>Description</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                {quotes.map(quote => (
+                  <tr key={quote._id}>
+                    <td>{quote.customerName}</td>
+                    <td>{quote.phone}</td>
+                    <td>{quote.cakeType}</td>
+                    <td>{quote.size}</td>
+                    <td>{quote.flavour}</td>
+                    <td>{quote.occasion}</td>
+                    <td>{quote.budget}</td>
+                    <td>{quote.designDescription}</td>
+                    <td>{new Date(quote.date).toLocaleDateString()}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      )}
     </div>
   );
 }

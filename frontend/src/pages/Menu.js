@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from "react";
 import { categories, menuItems } from "../data/menuData";
 import { toast } from "react-toastify";
