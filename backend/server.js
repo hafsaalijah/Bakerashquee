@@ -16,7 +16,7 @@ mongoose.connect(process.env.MONGO_URI)
     .catch((err)=>console.log(err));
 app.use("/api/orders", orderRoutes);
 app.use("/api/quotes", quoteRoutes);
-app.use(".api/admin", adminRoutes);
+app.use("/api/admin", adminRoutes);
 app.get("/", (req,res)=> res.send("Bakerashque Backend Running"));
 const PORT=process.env.PORT || 5000;
-app.listen(PORT, ()=>console.log(`Server running on {PORT}`))
+app.listen(PORT, ()=>console.log(`Server running on ${PORT}`))

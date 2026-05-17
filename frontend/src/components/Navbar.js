@@ -13,7 +13,7 @@ function Navbar(){
               <div className={`navbar-links ${menuOpen ? "open" : ""}`}>
                 <Link to="/" onClick={()=> setMenuOpen(false)}>Home</Link>
                 <Link to="/menu" onClick={()=> setMenuOpen(false)}>Menu</Link>
-                <Link to="/custom-order" onClick={()=>setMenuOpen(false)}>Custoem Order</Link> 
+                <Link to="/custom-order" onClick={()=>setMenuOpen(false)}>Custom Order</Link> 
                 <a href="https://www.instagram.com/direct/t/17842896446789984/" target="_blank" rel="noreferrer" className="instagram-btn">DM Us 😋</a>
               </div>
               <button className="hamburger" onClick={()=>setMenuOpen(!menuOpen)}>
